@@ -2,7 +2,7 @@
 ### This writeup contains the methods used for the pick & place project. Basically it describes how the forward and inverse kinematics of the Kuka Arm were defined and implemented in order to pick the object from the shelf and thrown it in the bin.
 
 ---
-![image1]: (https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/misc2.png)
+![image1](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/misc2.png)
 
 **Steps to complete the project:**  
 
