@@ -1,5 +1,5 @@
 ## Project: Kinematics Pick & Place
-### This writeup contains the methods used for the pick & place project. Basically it describes how the forward and inverse kinematics were defined and implemented. 
+### This writeup contains the methods used for the pick & place project. Basically it describes how the forward and inverse kinematics of the Kuka Arm were defined and implemented in order to pick the object from the shelf and thrown in the bin.
 
 ---
 
