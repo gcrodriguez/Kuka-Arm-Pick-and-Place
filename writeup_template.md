@@ -34,19 +34,35 @@ Below there is an example of one of the kuka arm pose. This mode was important f
 
 #### 2. Using the DH parameter table you derived earlier, create individual transformation matrices about each joint. In addition, also generate a generalized homogeneous transform between base_link and gripper_link using only end-effector(gripper) pose.
 
-The table below shows the DH parameter used in the code.
+The table below shows the DH parameter used in the code. As the joint theta angles (also represented by q's) are the variables of interest, the shall not be listed in the table.
 
 Links | alpha(i-1) | a(i-1) | d(i-1) | theta(i)
 --- | --- | --- | --- | ---
-0->1 | 0 | 0 | L1 | qi
-1->2 | - pi/2 | L2 | 0 | -pi/2 + q2
-2->3 | 0 | 0 | 0 | 0
-3->4 |  0 | 0 | 0 | 0
-4->5 | 0 | 0 | 0 | 0
-5->6 | 0 | 0 | 0 | 0
-6->EE | 0 | 0 | 0 | 0
+0->1 | 0 | 0 | 0.75 | 
+1->2 | - pi/2 | 0.35 | 0 | -pi/2 + q2
+2->3 | 0 | 1.25 | 0 | 0
+3->4 |  - pi/2 | -0.054 | 1.501 | 0
+4->5 |   pi/2 | 0 | 0 | 0
+5->6 | - pi/2 | 0 | 0 | 0
+6->EE | 0 | 0 | 0.303 | 0
 
-The transformation matrices about each joint were obtained using 
+The transformation matrices about each joint were obtained using the matrix as defined in class (image below). In the following image, it is represented an example of the transformation matrix corresponding to the gripper in relation of link 6 (T6_G).
+
+![image3](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/dh-transform-matrix.png)
+
+![image4](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/T0_6_code.png)
+
+Finally, to obtain the final transformation matrix corresponding to the gripper in relation of the base, individual transformation matrices about each joint shall be multiplied in the sequence as demonstrated below.
+
+T0_G = T0_1 * T1_2 * T2_3 * T3_4 * T4_5 * T5_6 * T6_G
+
+Before proceeding, as mentioned in class, the correction matrix (R_corr) shall multiply T0_G in order to correlate the orientation which the final transformation matrix (using DH parameters) describes and what is being seen in the robot's pose (urdf file).
+
+The correction matrix is composed by rotations about 180 deg in the Z axis and -90 deg in the Y axis, as can be observed in the image below of the implementation in the code.
+
+![image5](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/correction.png)
+
+Therefore, through the final matrix it is possible to extract the final orientations, important for use in inverse kinematics (to define wrist angles). Moreover, the position error between the final position of the gripper defined by the inverse kinematics and point defined in the trajectory planner (using the code IK_debug.py).
 
 #### 3. Decouple Inverse Kinematics problem into Inverse Position Kinematics and inverse Orientation Kinematics; doing so derive the equations to calculate all individual joint angles.
 
