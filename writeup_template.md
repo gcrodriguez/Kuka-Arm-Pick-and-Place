@@ -1,8 +1,8 @@
 ## Project: Kinematics Pick & Place
-### This writeup contains the methods used for the pick & place project. Basically it describes how the forward and inverse kinematics of the Kuka Arm were defined and implemented in order to pick the object from the shelf and thrown in the bin.
+### This writeup contains the methods used for the pick & place project. Basically it describes how the forward and inverse kinematics of the Kuka Arm were defined and implemented in order to pick the object from the shelf and thrown it in the bin.
 
 ---
-
+[image1]: ./Kuka-Arm-Pick-and-Place/misc2.png
 
 **Steps to complete the project:**  
 
@@ -14,12 +14,6 @@
 5. Perform Kinematic Analysis for the robot following the [project rubric](https://review.udacity.com/#!/rubrics/972/view).
 6. Fill in the `IK_server.py` with your Inverse Kinematics code. 
 
-
-[//]: # (Image References)
-
-[image1]: ./misc_images/misc1.png
-[image2]: ./misc_images/misc3.png
-[image3]: ./misc_images/misc2.png
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/972/view) Points
 ### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
