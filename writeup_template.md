@@ -66,9 +66,9 @@ Therefore, through the final matrix it is possible to extract the final orientat
 
 #### 3. Decouple Inverse Kinematics problem into Inverse Position Kinematics and inverse Orientation Kinematics; doing so derive the equations to calculate all individual joint angles.
 
-And here's where you can draw out and show your math for the derivation of your theta angles. 
+The image below il
 
-![alt text][image2]
+![image6](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK.png)
 
 ### Project Implementation
 
