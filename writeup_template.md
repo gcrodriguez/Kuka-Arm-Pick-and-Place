@@ -78,9 +78,7 @@ It is important to notice that:
 
 The first step that must be taken is to find the wirst center position in relation to the base. It can be obtained by subtracting form the gripper position (px,py, pz) the wirst length rotated by the wirst angles (roll, pitch, yaw). Then:
 
-     [[Wcx], [Wcy], [wcz]] = ([[px], [py], [pz]] - d7*Rrpy[:-1, 2], where Rrpy[:-1, 2] = orientation angles of Z axis taken from                                                                                                  rotation matrix (image below) and using wirst                                                                                            angles
-  
-![image7](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/rot_matrices.png)
+     [[Wcx], [Wcy], [wcz]] = ([[px], [py], [pz]] - d7*Rrpy[:-1, 2], where Rrpy[:-1, 2] is obtained from Rrpy = R_z * R_y * R_x * R_corr 
 
 Observing the image and based on the considerations below, it can be concluded that:
 
@@ -102,7 +100,31 @@ One way to quick obtain phi and psi angles is to do two times the cosine law by 
      
      theta1 = atan2(Wcy/Wcx)
 
-Now, with the relations of thetas 1, 2 and 3 stablished, it will be useful to find thetas 4, 5 and 6 by solving the inverse orientation kinematics
+Now, with the relations of thetas 1, 2 and 3 stablished, it will be useful to find thetas 4, 5 and 6 by solving the inverse orientation kinematics. The trick here is to manipulate the rotation matrices, as the angles of the gripper in relation to the base is an input. Then Rrpy matrix which is R0_G can be obtained by applying roll, pitch and yaw angles, as made to find Wirst position.
+
+     R0_G = Rrpy(function of roll, pitch , yaw)
+  
+But R0_G = R0_3 * R3_G ===> R0_3 * R3_G = Rrpy(function of roll, pitch , yaw)
+
+Then:
+     R3_G = inv(R0_3) * R3_G,  where R0_3 is the rotation matriz of the wirst center in relation to the base using thetas 1, 2 and 3                                    obtained in the inverser position kinematics
+     
+ And the matriz of the left side:
+
+       [-sin(q4)*sin(q6) + cos(q4)*cos(q5)*cos(q6)    -sin(q4)*cos(q6) - sin(q6)*cos(q4)*cos(q5)    -sin(q5)*cos(q4)]
+R3_G = [                  
+       [
+
+
+By comparing the matrix of the left side with the final matrix of the right side which contains values:
+
+
+
+
+
+
+
+
 ### Project Implementation
 
 #### 1. Fill in the `IK_server.py` file with properly commented python code for calculating Inverse Kinematics based on previously performed Kinematic Analysis. Your code must guide the robot to successfully complete 8/10 pick and place cycles. Briefly discuss the code you implemented and your results. 
