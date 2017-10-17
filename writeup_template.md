@@ -147,6 +147,21 @@ The results obtained in the IK_debug for three cases showed that error in the gr
  
 ![image9](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK_debug_3.png)
 
+The code used to run the simulations above used simplify matrices multplication. With this all really smal components were removed. But when the simplify command was removed from the code, the total run time to calculate one pose decreases to about sec. However, the position error increased, as can be observed below. 
+
+ - Simulation 1
+ 
+![image10](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK_debug_1.png)
+
+ - Simulation 2
+ 
+![image11](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK_debug_2.png)
+
+- Simulation 3
+ 
+![image12](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK_debug_3.png)
+
+
 Here I'll talk about the code, what techniques I used, what worked and why, where the implementation might fail and how I might improve it if I were going to pursue this project further.  
 
 
