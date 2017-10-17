@@ -133,6 +133,19 @@ With all relations described above the joint angles can be provided to the simul
 
 #### 1. Fill in the `IK_server.py` file with properly commented python code for calculating Inverse Kinematics based on previously performed Kinematic Analysis. Your code must guide the robot to successfully complete 8/10 pick and place cycles. Briefly discuss the code you implemented and your results. 
 
+The results obtained in the IK_debug for three cases showed that error in the gripper position is below than 0.00000000 for the tree cases simulated, as shown in the images below. However, the total run time to calculate one pose is about 70 sec which makes a very long simulation in the gazebo world.
+
+ - Simulation 1
+ 
+![image7](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK_debug_1.png)
+
+ - Simulation 2
+ 
+![image8](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK_debug_2.png)
+
+- Simulation 3
+ 
+![image9](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK_debug_3.png)
 
 Here I'll talk about the code, what techniques I used, what worked and why, where the implementation might fail and how I might improve it if I were going to pursue this project further.  
 
