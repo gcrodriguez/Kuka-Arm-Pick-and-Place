@@ -66,10 +66,43 @@ Therefore, through the final matrix it is possible to extract the final orientat
 
 #### 3. Decouple Inverse Kinematics problem into Inverse Position Kinematics and inverse Orientation Kinematics; doing so derive the equations to calculate all individual joint angles.
 
-The image below il
+To solve de inverse kinematics problem it has to be decoupled in inverse position kinematics and inverse orientation kinematics. Solving the inverse position kinematics will provide the angles theta 1, 2 and 3. As mentioned in class, trigonometry is the best ally to deal with this situation. Then separating the robot arm up to the wrist center, the image below describes the trigonometry scenario considered to find the firs three joint angles.
 
 ![image6](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK.png)
 
+It is important to notice that:
+ - Epslon angle is fixed and defined by the atan(a3/d4). At initial position, if epslon was equal to zero, L3 would be orthogonal to L2.
+ - At initial position, when theta 2 equal zero, L2 is orthogonal to a1.
+ - Carrefull must be taken when finding d13. It is not simply the diference between Wcx and a1. As the robot arm rotates about Z0 axis,    a1, which is fixed, rotates and it makes difference for d13 and d11.
+ - The position (px,py, pz) and orientation (roll, pitch, yaw) of the gripper (end effector) will be inputs for the inverse kinematics.    The trajectory planner will provide these parameters to the IK_server through a service call.
+
+The first step that must be taken is to find the wirst center position in relation to the base. It can be obtained by subtracting form the gripper position (px,py, pz) the wirst length rotated by the wirst angles (roll, pitch, yaw). Then:
+
+     [[Wcx], [Wcy], [wcz]] = ([[px], [py], [pz]] - d7*Rrpy[:-1, 2], where Rrpy[:-1, 2] = orientation angles of Z axis taken from                                                                                                  rotation matrix (image below) and using wirst                                                                                            angles
+  
+![image7](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/rot_matrices.png)
+
+Observing the image and based on the considerations below, it can be concluded that:
+
+     theta2 + phi + ro = 90deg ==> theta2 = 90deg - phi - ro
+
+     psi + theta3 + epslon = 90deg ==> theta3 = 90deg - psi - epslon
+
+The goal now is to obtain phi, ro and psi. The ro angle is simply achieved by observing the d11d12d13 triangle:
+
+     ro = atan2(d12/d11) , where : d12 = Wcz - d1 and d11 = sqrt(Wcy² + Wcx²) - a1
+     
+One way to quick obtain phi and psi angles is to do two times the cosine law by observing the d13L2L3 triangle;
+
+     phi = acos(-(L3² - L2² - d13²)/(2*L2*d13)), where L2 = a2, L3 = sqrt(a3² + d4²) and d13 = sqrt(d11² + d12²)
+     
+     psi = acos(-(d13² - L2² - L3²)/(2*L2*L3))
+
+ Finally, theta1 is obtained by the (a1 + d11)WcxWcy triangle showed in the top view:
+     
+     theta1 = atan2(Wcy/Wcx)
+
+Now, with the relations of thetas 1, 2 and 3 stablished, it will be useful to find thetas 4, 5 and 6 by solving the inverse orientation kinematics
 ### Project Implementation
 
 #### 1. Fill in the `IK_server.py` file with properly commented python code for calculating Inverse Kinematics based on previously performed Kinematic Analysis. Your code must guide the robot to successfully complete 8/10 pick and place cycles. Briefly discuss the code you implemented and your results. 
