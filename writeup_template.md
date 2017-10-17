@@ -151,15 +151,15 @@ The code used to run the simulations above used simplify matrices multplication.
 
  - Simulation 1
  
-![image10](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK_debug_1.png)
+![image10](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK_debug_1_faster.png)
 
  - Simulation 2
  
-![image11](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK_debug_2.png)
+![image11](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK_debug_2_faster.png)
 
 - Simulation 3
  
-![image12](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK_debug_3.png)
+![image12](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK_debug_3_faster.png)
 
 
 Here I'll talk about the code, what techniques I used, what worked and why, where the implementation might fail and how I might improve it if I were going to pursue this project further.  
