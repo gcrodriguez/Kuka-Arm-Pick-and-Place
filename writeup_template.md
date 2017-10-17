@@ -111,19 +111,23 @@ Then:
      
  And the matriz of the left side:
 
-       [-sin(q4)*sin(q6) + cos(q4)*cos(q5)*cos(q6)    -sin(q4)*cos(q6) - sin(q6)*cos(q4)*cos(q5)    -sin(q5)*cos(q4)]
-R3_G = [                  
-       [
+       R3_G = Matrix([[-sin(q4)*sin(q6) + cos(q4)*cos(q5)*cos(q6), -sin(q4)*cos(q6) - sin(q6)*cos(q4)*cos(q5), -sin(q5)*cos(q4)]
+                      [sin(q5)*cos(q6),                            -sin(q5)*sin(q6),                                    cos(q5)]
+                      [-sin(q4)*cos(q5)*cos(q6) - sin(q6)*cos(q4),  sin(q4)*sin(q6)*cos(q5) - cos(q4)*cos(q6),  sin(q4)*sin(q5)]])
 
+By comparing the matricez of the right side (above) with the left side containing values, the relations for thetas 4, 5 and 6 were obtained, as specified below:
 
-By comparing the matrix of the left side with the final matrix of the right side which contains values:
+       Rrpy[2,2] / -Rrpy[0,2] = sin(q4)*sin(q5)/-(-sin(q5)*cos(q4)) ==> theta4 = atan2(Rrpy[2,2] / Rrpy[0,2])
 
-
-
-
-
-
-
+       sqrt(Rrpy[1,0]² + Rrpy[1,1]²) / Rrpy[1,2] = sqrt((sin(q5)*cos(q6)² + (-sin(q5)*sin(q6))²)/cos(q5)
+          ==> theta5 = atan2(sqrt(Rrpy[1,0]² + Rrpy[1,1]²) / Rrpy[1,2]
+          
+ NOTE: For theta formulation, sqrt(Rrpy[1,0]² + Rrpy[1,1]²) could be exchanged by sqrt(Rrpy[0,2]² + Rrpy[2,2)
+ 
+       -Rrpy[1,1] / Rrpy[1,0] = -(-sin(q5)*sin(q6))/sin(q5)*cos(q6) ==> theta6 = atan2(-Rrpy[1,1] / Rrpy[1,0])
+       
+       
+With all relations described above the joint angles can be provided to the simulation when requested by the service call with an kuka's arm pose.
 
 ### Project Implementation
 
