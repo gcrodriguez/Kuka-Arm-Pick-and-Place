@@ -163,7 +163,7 @@ The code used to run the simulations above used simplify matrices multplication.
 
 Keep going to turn the code faster and minimize erros, .evalf was removed and substituted directly by .subs. It works and the total run time is now about 2 sec and the error, 0.12. The image below show the simulations results for case 1.
 
-
+![image113](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK_debug_1_faster_faster.png)
 
 Here I'll talk about the code, what techniques I used, what worked and why, where the implementation might fail and how I might improve it if I were going to pursue this project further.  
 
