@@ -159,10 +159,10 @@ Keep going to turn the code faster and minimize erros, .evalf was removed and su
 
 With the results below, it was concluded that the error shall be reduced more in order to the gripper do not throw the object out of the bin (as already happened when these results were simulated in the gazebo). So the key point to achive 0.00000000 error, was to make a simplyfication to the R0_3 rotation matrix (small components were removed from the results). Then, the best results of this code were achieved, as can be observed below.
 
-![image12(https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK_debug_1_final.png)
+![image12](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK_debug_1_final.png)
 
-![image13(https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK_debug_2_final.png)
+![image13](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK_debug_2_final.png)
 
-![image14(https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK_debug_3_final.png)
+![image14](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK_debug_3_final.png)
 
 
