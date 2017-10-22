@@ -133,6 +133,8 @@ With all relations described above the joint angles can be provided to the simul
 
 #### 1. Fill in the `IK_server.py` file with properly commented python code for calculating Inverse Kinematics based on previously performed Kinematic Analysis. Your code must guide the robot to successfully complete 8/10 pick and place cycles. Briefly discuss the code you implemented and your results. 
 
+### IK_debug
+
 The results obtained in the IK_debug for three cases showed that error in the gripper position is below than 0.00000000 for the tree cases simulated, as shown in the images below. However, the total run time to calculate one pose is about 70 sec which makes a very long simulation in the gazebo world.
 
  - Simulation 1
@@ -165,4 +167,25 @@ With the results below, it was concluded that the error shall be reduced more in
 
 ![image14](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK_debug_3_final.png)
 
+### Gazebo simulation
 
+The images below show the final result of the 10 simulations. From these, it can be seen that 3 cylinders are not in the bin, indicating that some error occured during 3 simulations. In the following of the image, the simulations are numbered along with the evaluation. 
+
+![image15](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/shelf.png)
+
+![image16](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/bin.png)
+
+- Simulations
+
+1: For some reason, the gripper did not pick the object, lefting it in the shelf (lowe position in the shelf of the image). However,the kuka arm executed the planned trajectories well reaching the dropp-off location.
+2: Success!
+3: Success!
+4: Repeated the error of the first simulation, but for the mid position in the shelf of the image. It also executed well the planned trajectories well reaching the dropp-off location. Another point that shall be mentioned is that other two simulations for that position succeeded.
+5: Success!
+6: Success!
+7: For some reason, the kuka arm did not executed the 'moving to the dropp-off location' command and dropped the object in front of the shelf.
+8: Success!
+9: Success!
+10: Success!
+
+The last important point that shall be mentioned is that the kuka arm in few simultions executed unnecessary wirst rotations. This is a point that shall be optimized by considering the wirst rotations ( in the 'moving to dropp-off' command) when the arm reaches the dropp-off location or by taking in accont the orientation of the previous point for adjusting the actual when they have big different values.
