@@ -147,28 +147,22 @@ The results obtained in the IK_debug for three cases showed that error in the gr
  
 ![image9](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK_debug_3.png)
 
-The code used to run the simulations above used simplify matrices multplication. With this all really smal components were removed. But when the simplify command was removed from the code, the total run time to calculate one pose decreases to about 14 sec. However, the position error increased, as can be observed below. 
-
- - Simulation 1
- 
-![image10](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK_debug_1_faster.png)
-
- - Simulation 2
- 
-![image11](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK_debug_2_faster.png)
+The code used to run the simulations above used simplify matrices multplication. With this all really smal components were removed. But when the simplify command was removed from the code, the total run time to calculate one pose decreases to about 15 sec. However, the position error increased to 0.4, as can be observed in the simulation results for case 3 below. 
 
 - Simulation 3
  
-![image12](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK_debug_3_faster.png)
+![image10](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK_debug_3_faster.png)
 
-Keep going to turn the code faster and minimize erros, .evalf was removed and substituted directly by .subs. It works and the total run time is now about 2 sec and the error, 0.14. The image below show the simulations results for case 1.
+Keep going to turn the code faster and minimize erros, .evalf was removed and substituted directly by .subs. Also, all operations using math seems to  be unecessary and they were removed. These changes resulted in better results. The total run time was about 2 sec and the error, 0.14. The image below show the simulations results for case 1.
 
-![image13](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK_debug__faster1_faster.png)
+![image11](https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK_debug__faster1_faster.png)
 
-Here I'll talk about the code, what techniques I used, what worked and why, where the implementation might fail and how I might improve it if I were going to pursue this project further.  
+With the results below, it was concluded that the error shall be reduced more in order to the gripper do not throw the object out of the bin (as already happened when these results were simulated in the gazebo). So the key point to achive 0.00000000 error, was to make a simplyfication to the R0_3 rotation matrix (small components were removed from the results). Then, the best results of this code were achieved, as can be observed below.
 
+![image12(https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK_debug_1_final.png)
 
-And just for fun, another example image:
-![alt text][image3]
+![image13(https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK_debug_2_final.png)
+
+![image14(https://github.com/gcrodriguez/Kuka-Arm-Pick-and-Place/blob/master/IK_debug_3_final.png)
 
 
